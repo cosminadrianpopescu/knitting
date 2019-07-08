@@ -1,51 +1,27 @@
-<!--div class="container">
-    <div class="row height-344">
-        <div class="col-10">
-            <div class="row align-items-center height-20">
-                <div class="col-6">{{view._displayedRow.side}}</div>
-                <div class="col-6">Current row: {{view._currentRow.idx + 1}}</div>
-            </div>
-            <div (click)="view._next()" class="row-data card row align-items-center height-60">
-                <div class="card-body">{{view._displayedRow.data}}</div>
-            </div>
-            <div class="row height-20 align-items-center" [hidden]="view._displayedRow.idx == view._currentRow.idx">
+<div class="app-container">
+    <div class="left-pane">
+        <div class="header">
+            <div class="current-row">{{view._currentRow.idx + 1}}</div>
+            <div class="side">{{view._displayedRow.side}}</div>
+        </div>
+        <div class="row-content card-panel" (click)="view._next()">
+            {{view._displayedRow.data}}
+        </div>
+        <div class="footer">
+            <div class="button"  [hidden]="view._displayedRow.idx == view._currentRow.idx">
                 <button (click)="view._makeCurrent()" class="btn btn-primary" type="button" [hidden]="">Make current</button>
             </div>
         </div>
-        <div class="col-2 right">
-            <div class="height-10 align-items-center" *ngIf="view._displayedRow.idx | showLastRow:view._rowsNo" (click)="view._select(1)">{{view._rowsNo}}</div>
-            <div class="height-10 align-items-center" *ngIf="view._displayedRow.idx | showDotsUp:view._rowsNo" (click)="view._select(1)">...</div>
-            <div class="height-40 align-items-center">
-                <div *ngIf="view._displayedRow.idx | showNextRow:view._rowsNo" (click)="view._select(1)">{{view._displayedRow.idx + 2}}</div>
-                <div class="current">{{view._displayedRow.idx + 1}}</div>
-                <div *ngIf="view._displayedRow.idx | showPrevRow" (click)="view._select(-1)">{{view._displayedRow.idx}}</div>
-            </div>
-            <div class="height-10 align-items-center" *ngIf="view._displayedRow.idx | showDotsDown" (click)="view._select(-1)">...</div>
-            <div class="height-10 align-items-center" *ngIf="view._displayedRow.idx | showFirstRow" (click)="view._select(-1)">1</div>
-        </div>
     </div>
-</div-->
-
-<div class="flex">
-    <div class="width-80 height-344">
-        <div class="flex height-20">
-            <div class="width-50">{{view._displayedRow.side}}</div>
-            <div class="width-50">Current row: {{view._currentRow.idx + 1}}</div>
+    <div class="right-pane">
+        <div class="navigation-pane">
+            <div class="navigation-item" *ngIf="view._displayedRow.idx | showLastRow:view._rowsNo" (click)="view._select(1)">{{view._rowsNo}}</div>
+            <div class="navigation-item" *ngIf="view._displayedRow.idx | showDotsUp:view._rowsNo" (click)="view._select(1)">&#8942;</div>
+            <div class="navigation-item" *ngIf="view._displayedRow.idx | showNextRow:view._rowsNo" (click)="view._select(2)">{{view._displayedRow.idx + 2}}</div>
+            <div class="navigation-item current">{{view._displayedRow.idx + 1}}</div>
+            <div class="navigation-item" *ngIf="view._displayedRow.idx | showPrevRow" (click)="view._select(-1)">{{view._displayedRow.idx}}</div>
+            <div class="navigation-item" *ngIf="view._displayedRow.idx | showDotsDown" (click)="view._select(-1)">&#8942;</div>
+            <div class="navigation-item" *ngIf="view._displayedRow.idx | showFirstRow" (click)="view._select(-1)">1</div>
         </div>
-        <div class="row-data height-60" (click)="view._next()">{{view._displayedRow.data}}</div>
-        <div class="height-20 flex" [hidden]="view._displayedRow.idx == view._currentRow.idx">
-            <button (click)="view._makeCurrent()" class="btn btn-primary" type="button" [hidden]="">Make current</button>
-        </div>
-    </div>
-    <div class="width-20 height-344">
-        <div class="height-20 flex" *ngIf="view._displayedRow.idx | showLastRow:view._rowsNo" (click)="view._select(1)">{{view._rowsNo}}</div>
-        <div class="height-10 flex" *ngIf="view._displayedRow.idx | showDotsUp:view._rowsNo" (click)="view._select(1)">...</div>
-        <div class="height-40 flex-column">
-            <div class="flex" *ngIf="view._displayedRow.idx | showNextRow:view._rowsNo" (click)="view._select(2)">{{view._displayedRow.idx + 2}}</div>
-            <div class="current flex">{{view._displayedRow.idx + 1}}</div>
-            <div class="flex" *ngIf="view._displayedRow.idx | showPrevRow" (click)="view._select(-1)">{{view._displayedRow.idx}}</div>
-        </div>
-        <div class="height-10 flex" *ngIf="view._displayedRow.idx | showDotsDown" (click)="view._select(-1)">...</div>
-        <div class="height-20 flex" *ngIf="view._displayedRow.idx | showFirstRow" (click)="view._select(-1)">1</div>
     </div>
 </div>
