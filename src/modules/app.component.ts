@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import {RowService} from 'src/modules/services/row';
 import {Row} from 'src/modules/models/row';
 import {BaseComponent} from 'src/modules/base.component';
@@ -6,7 +6,8 @@ import {BaseComponent} from 'src/modules/base.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent extends BaseComponent {
     private _currentRow: Row;
